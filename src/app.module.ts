@@ -3,20 +3,27 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PartModule } from './parts/part.module';
+import entities from './parts/entities';
+import { HealthModule } from './health/health.module';
+import { PartsModule } from './parts/parts.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      migrationsTableName: 'migrations',
       type: 'mysql',
-      host: 'localhost',
+      host: '127.0.0.1',
+      port: 3306,
       username: 'root',
-      password: '',
+      password: 'root',
       database: 'inventory',
-      autoLoadEntities: true,
+      entities: entities,
+      migrationsTableName: 'migrations',
+      migrations: [],
+      connectorPackage: 'mysql2',
+      synchronize: true,
     }),
-    TypeOrmModule.forFeature([PartModule]),
+    HealthModule,
+    PartsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
