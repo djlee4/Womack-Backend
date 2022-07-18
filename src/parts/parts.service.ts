@@ -71,8 +71,10 @@ export class PartsService {
     }
   }
 
-  findAll() {
-    return this.partRepository.find();
+  findAll(): Promise<Part[]> {
+    return this.partRepository.find({
+      relations: ['type', 'brand', 'category'],
+    });
   }
 
   findOne(id: number) {

@@ -1,4 +1,4 @@
-import { isNotEmpty, IsNotEmpty, Min } from 'class-validator';
+import { IsNotEmpty, Min } from 'class-validator';
 import { PartBrand } from '../entities/part-brand.entity';
 import { PartCategory } from '../entities/part-category.entity';
 import { PartType } from '../entities/part-type.entity';
@@ -23,12 +23,9 @@ export class CreatePartDto {
   @IsNotEmpty()
   hasCore: boolean;
 
-  @IsNotEmpty()
-  brand: PartBrand;
+  brand?: PartBrand;
 
-  @IsNotEmpty()
-  category: PartCategory;
+  category?: PartCategory;
 
-  @IsNotEmpty()
-  type: PartType;
+  type?: PartType;
 }

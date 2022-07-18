@@ -1,4 +1,3 @@
-import { current_timestamp } from 'src/lib/utils';
 import {
   Column,
   CreateDateColumn,
@@ -21,6 +20,7 @@ export class PartType {
     nullable: false,
     name: 'created_at',
     type: 'datetime',
+    select: false,
   })
   createdAt: string;
 
@@ -28,6 +28,7 @@ export class PartType {
     name: 'deleted_at',
     type: 'datetime',
     nullable: true,
+    select: false,
   })
   deletedAt?: string | null;
 
