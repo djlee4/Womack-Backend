@@ -1,11 +1,9 @@
-import { current_timestamp } from 'src/lib/utils';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
   JoinColumn,
-  JoinTable,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -40,7 +38,7 @@ export class Part {
   @JoinColumn({ name: 'brand_id' })
   brand: PartBrand;
 
-  @ManyToOne(() => PartCategory, (PartCategory) => PartCategory.id, {})
+  @ManyToOne(() => PartCategory, (partCategory) => partCategory.id, {})
   @JoinColumn({ name: 'category_id' })
   category: PartCategory;
 
@@ -52,6 +50,7 @@ export class Part {
     nullable: false,
     name: 'created_at',
     type: 'datetime',
+    select: false,
   })
   createdAt: string;
 
@@ -59,6 +58,7 @@ export class Part {
     name: 'deleted_at',
     type: 'datetime',
     nullable: true,
+    select: false,
   })
   deletedAt?: string | null;
 }

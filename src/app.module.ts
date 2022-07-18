@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import entities from './parts/entities';
 import { HealthModule } from './health/health.module';
 import { PartsModule } from './parts/parts.module';
+import { StuffModule } from './stuff/stuff.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { PartsModule } from './parts/parts.module';
     }),
     HealthModule,
     PartsModule,
+    StuffModule,
   ],
   controllers: [AppController],
   providers: [AppService],

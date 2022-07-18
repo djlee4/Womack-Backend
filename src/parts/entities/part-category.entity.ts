@@ -1,11 +1,10 @@
-import { current_timestamp } from 'src/lib/utils';
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
+  Entity,
   OneToMany,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Part } from './part.entity';
 
@@ -21,6 +20,7 @@ export class PartCategory {
     nullable: false,
     name: 'created_at',
     type: 'datetime',
+    select: false,
   })
   createdAt: string;
 
@@ -28,6 +28,7 @@ export class PartCategory {
     name: 'deleted_at',
     type: 'datetime',
     nullable: true,
+    select: false,
   })
   deletedAt?: string | null;
 
