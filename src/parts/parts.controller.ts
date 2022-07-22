@@ -10,6 +10,7 @@ import {
   HttpStatus,
   UsePipes,
   ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { PartsService } from './parts.service';
 import { CreatePartDto } from './dto/create-part.dto';
@@ -43,6 +44,12 @@ export class PartsController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.partsService.findOne(+id);
+  }
+
+  @Get('/barcode/:barcode')
+  findByBarcode(@Param('barcode') barcode: string) {
+    console.log(barcode);
+    return this.partsService.findByBarcode(barcode);
   }
 
   @Patch(':id')

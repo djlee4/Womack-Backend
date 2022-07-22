@@ -88,4 +88,11 @@ export class PartsService {
   remove(id: number) {
     return `This action removes a #${id} part`;
   }
+
+  findByBarcode(barcode: string) {
+    return this.partRepository.findOne({
+      where: { barcode },
+      relations: { brand: true, type: true, category: true },
+    });
+  }
 }
